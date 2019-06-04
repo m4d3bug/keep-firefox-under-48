@@ -26,8 +26,8 @@ logo() {
     echo '                                                       /____/                                                              /____/   '
     echo '                                                                                                                              v0.1.0'
     echo '                                                                                                             https://www.madebug.net'
-    echo '                                                                                       System Required: Firefox47.0b9 on Kali, MacOS'
-    echo '                                                  PS: Will init your firefox and reinstall Firefox47.0b9, please backup if your care'
+    echo '                                                                               System Required: Firefox47.0b9 on Ubuntu, Kali, MacOS'
+    echo '                                                PS: Will init your firefox and reinstall Firefox47.0b9 , please backup if your care.'
 }
 
 welcome() {
@@ -101,10 +101,13 @@ install_firefox(){
     bunzip2 $scriptpath/firefox-47.0b9.tar.bz2
     rm -rf /usr/lib/firefox*
     tar xvf $scriptpath/firefox-47.0b9.tar -C /usr/lib/ >> /dev/null
+    # what if kali with root
     if grep -Eqi "Kali" /etc/issue;then
       ln -sf /usr/lib/firefox/firefox /usr/bin/firefox-esr
       echo "firefox >> /dev/null 2>&1 &" > /usr/bin/firefox47   
     else
+      chown -R $(echo ${SUDO_USER:-$USER}):$(id -gn) ~/.mozilla
+      chown -R $(echo ${SUDO_USER:-$USER}):$(id -gn) ~/.cache/mozilla
       ln -sf /usr/lib/firefox/firefox /usr/bin/firefox
       echo "firefox >> /dev/null 2>&1 &" > /usr/bin/firefox47
     fi
@@ -174,7 +177,7 @@ copy_add_ons(){
   # Foxy Proxy
   cp -a "extensions/foxy_proxy.xpi" "$scriptpath/foxy_proxy.xpi"
   # Greasemonkey
-  cp -a "extensions/greasemonkey.xpi" -o /dev/null  -O "$scriptpath/greasemonkey.xpi"
+  cp -a "extensions/greasemonkey.xpi" "$scriptpath/greasemonkey.xpi"
   # HackBar
   cp -a "extensions/hackbar.xpi" "$scriptpath/hackbar.xpi"
   # Hacksearch
@@ -238,7 +241,7 @@ install_add_ons(){
   killall firefox &> /dev/null
   #Running it again.
   "$firefoxpath" "$scriptpath/"*.xpi "$scriptpath/.installation_finished.html" &> /dev/null
-  rm -rf "$extensions/"; echo -e "[${green}Info${plain}]Deleted the tmp directory."
+  rm -rf "$extensions"; echo -e "[${green}Info${plain}]Deleted the tmp directory."
   echo -e "[${green}Info${plain}] Firefox Security Toolkit is finished\n"
   if [[ "$(uname)" == "Linux" ]];then
     echo -e "[${green}Info${plain}] Use command ===>  firefox47  "
