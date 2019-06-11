@@ -207,7 +207,7 @@ copy_add_ons(){
   # Shodan
   cp -a "extensions/shodan.xpi" "$scriptpath/shodan.xpi"
   # Show IP
-  cp -a "extensions/show_ip.xpi" "$scriptpath/show_ip.xpi"
+  cp -a "extensions/showip.xpi" "$scriptpath/showip.xpi"
   # SQL Inject Me
   cp -a "extensions/sql_inject_me.xpi" "$scriptpath/sql_inject_me.xpi"
   # Status4evar
