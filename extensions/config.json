@@ -1,0 +1,303 @@
+{
+  "log": {
+    "access": "none",
+    "dnsLog": false,
+    "error": "",
+    "loglevel": "warning",
+    "maskAddress": ""
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "ip": [
+          "geoip:private"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "dns": null,
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 62789,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "streamSettings": null,
+      "tag": "api",
+      "sniffing": null
+    },
+    {
+      "listen": null,
+      "port": 16808,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "8muxkfer",
+            "flow": "xtls-rprx-vision",
+            "id": "8f5f269b-d25e-482e-88f2-80d42f0df678"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": []
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "dest": "swdist.apple.com:443",
+          "maxClient": "",
+          "maxTimediff": 0,
+          "minClient": "",
+          "privateKey": "2H8UySrjII3VSTIQ_ifROPlhSfEpSA3w_pqJn2dYCGI",
+          "serverNames": [
+            "swdist.apple.com"
+          ],
+          "shortIds": [
+            "e89c4ba1938e6e18",
+            "74",
+            "c4a9",
+            "162d0c",
+            "e9292107",
+            "42b76f1b3f",
+            "362697110b6a",
+            "f2aa9505b17cb2"
+          ],
+          "show": false,
+          "xver": 0
+        },
+        "security": "reality",
+        "tcpSettings": {
+          "acceptProxyProtocol": false,
+          "header": {
+            "type": "none"
+          }
+        }
+      },
+      "tag": "inbound-16808",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic",
+          "fakedns"
+        ],
+        "metadataOnly": false,
+        "routeOnly": false
+      }
+    },
+    {
+      "listen": null,
+      "port": 10001,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "email": "vv1l9455",
+            "id": "0454d6fe-e85a-43a0-96e3-21bee0369a83"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": false,
+          "headers": {},
+          "heartbeatPeriod": 0,
+          "host": "",
+          "path": "/m4d3bugws"
+        }
+      },
+      "tag": "inbound-10001",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic",
+          "fakedns"
+        ],
+        "metadataOnly": false,
+        "routeOnly": false
+      }
+    },
+    {
+      "listen": null,
+      "port": 10002,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "0bzcli3r",
+            "flow": "",
+            "id": "0454d6fe-e85a-43a0-96e3-21bee0369a83"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": []
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": false,
+          "headers": {},
+          "heartbeatPeriod": 0,
+          "host": "",
+          "path": "/m4d3bugws"
+        }
+      },
+      "tag": "inbound-10002",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic",
+          "fakedns"
+        ],
+        "metadataOnly": false,
+        "routeOnly": false
+      }
+    },
+    {
+      "listen": null,
+      "port": 10003,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "email": "b509xqpd",
+            "password": "0454d6fe-e85a-43a0-96e3-21bee0369a83"
+          }
+        ],
+        "fallbacks": []
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": false,
+          "headers": {},
+          "heartbeatPeriod": 0,
+          "host": "",
+          "path": "/m4d3bugws"
+        }
+      },
+      "tag": "inbound-10003",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic",
+          "fakedns"
+        ],
+        "metadataOnly": false,
+        "routeOnly": false
+      }
+    },
+    {
+      "listen": null,
+      "port": 10000,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "e500u7wa",
+            "flow": "",
+            "id": "0454d6fe-e85a-43a0-96e3-21bee0369a83"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": []
+      },
+      "streamSettings": {
+        "grpcSettings": {
+          "authority": "",
+          "multiMode": false,
+          "serviceName": "m4d3buggrpc"
+        },
+        "network": "grpc",
+        "security": "none"
+      },
+      "tag": "inbound-10000",
+      "sniffing": {
+        "enabled": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic",
+          "fakedns"
+        ],
+        "metadataOnly": false,
+        "routeOnly": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "AsIs",
+        "redirect": "",
+        "noises": []
+      }
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "transport": null,
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundDownlink": true,
+      "statsInboundUplink": true,
+      "statsOutboundDownlink": false,
+      "statsOutboundUplink": false
+    }
+  },
+  "api": {
+    "tag": "api",
+    "services": [
+      "HandlerService",
+      "LoggerService",
+      "StatsService"
+    ]
+  },
+  "stats": {},
+  "reverse": null,
+  "fakedns": null,
+  "observatory": null,
+  "burstObservatory": null,
+  "metrics": null
+}
